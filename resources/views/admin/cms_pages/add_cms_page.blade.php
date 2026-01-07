@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="form-group col-sm-12 col-md-9">
                                 <label for="page_title">Page Title<span class="text-danger">*</span></label>
-                                <input id="page_title" name="page_title" type="text" class="form-control validate" value="{{ isset($edit->page_title) ? $edit->page_title : '' }}" readonly>
+                                <input id="page_title" name="page_title" type="text" class="form-control validate" value="{{ isset($edit->page_title) ? $edit->page_title : '' }}" >
                             </div>
                             <div class="form-group col-sm-12 col-md-9">
                                 <label for="page_content">Page Content<span class="text-danger">*</span></label>

@@ -55,14 +55,14 @@
                         <div class="form-group col-md-6">
                             <label for="name">Product Name <span class="text-danger">*</span></label>
                             <input type="text" name="name" id="name" class="form-control"
-                                value="{{ old('name', $edit->name ?? '') }}" required>
+                                value="{{ old('name', $edit->name ?? '') }}" required >
                         </div>
 
                         {{-- Slug --}}
                         <div class="form-group col-md-6">
                             <label for="slug">Slug <span class="text-danger">*</span></label>
                             <input type="text" name="slug" id="slug" class="form-control"
-                                value="{{ old('slug', $edit->slug ?? '') }}" required>
+                                value="{{ old('slug', $edit->slug ?? '') }}" required disabled >
                         </div>
 
                         {{-- Status --}}

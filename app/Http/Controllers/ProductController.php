@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\ProductImage; // Make sure to include the Product model
 
 class ProductController extends Controller
 {
@@ -73,7 +74,6 @@ public function update(Request $request, $id)
 {
     $request->validate([
         'name' => 'required|string|max:255',
-        'slug' => 'required|string|max:255',
         'status' => 'required|in:active,inactive',
         'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp',
         'image_names.*' => 'nullable|string|max:255',

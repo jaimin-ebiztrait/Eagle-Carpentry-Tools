@@ -9,7 +9,7 @@
                 <div class="contact_us">
                 	<div class="about_us_cont">
                     	<div class="work_space">                        	
-                        	<img src="./images/office.png">
+                        	<img src="{{ asset('frontend/images/office.png') }}">
                         </div>
                         <div class="about_us_cont_left">                        
                         	<p>We are one of the  leading manufacturers of  Carpentry Tools and Hand Tools since 1958, having  three very popular brands EAGLE , SWASTIK , SCISSOR. We have wide range of products in Carpentry Tools and hand tools  like FIRMER CHISEL , MORTISE CHISEL, BEVEL CHISEL, HEAVY CHISEL, CUT PLANE IRON, MALBAR CHISEL, CHISEL WOODEN HANDLE ,CHISEL PLASTIC HANDLE , SCREW DRIVER, WALL SCRAPPER , HAMMER ETC.

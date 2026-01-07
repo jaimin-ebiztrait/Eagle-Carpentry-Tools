@@ -26,11 +26,17 @@ use App\Http\Controllers\PageController;
 // Route::get('/', [AdminController::class, 'login']);
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/products', [PageController::class, 'products'])->name('products');
+Route::get('/products/{slug?}', [PageController::class, 'products'])->name('products');
 Route::get('/feedback', [PageController::class, 'feedback'])->name('feedback');
 Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/brochure', [PageController::class, 'brochure'])->name('brochure');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
+
+
+
+Route::post('/quote-submit', [PageController::class, 'quoteSubmit'])->name('quote.submit');
+Route::post('/feedback-submit', [PageController::class, 'feedbackSubmit'])->name('feedback_form.submit');
+
 // Route::get('/', [FrontendController::class, 'privacyPolicy'])->name('home');
 // Route::get('/{slug}', [FrontendController::class, 'show'])->name('pages.show'); // Dynamic page route
 

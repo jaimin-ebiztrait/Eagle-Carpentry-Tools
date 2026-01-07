@@ -37,15 +37,10 @@
                         </a>
                     </li>
 
-                    <li class="">
-                        <a href="#" class="">
-                            <i class="material-icons"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
+                   
 
                <li class="">
-                    <a href="" class="">
+                    <a href="{{ route('admin.list_product') }}" class="">
                         <i class="material-icons"></i>
                         <span>Products</span>
                     </a>
