@@ -70,6 +70,8 @@
                                 <label for="page_title">Page Title<span class="text-danger">*</span></label>
                                 <input id="page_title" name="page_title" type="text" class="form-control validate" value="{{ isset($edit->page_title) ? $edit->page_title : '' }}" >
                             </div>
+                            @if(isset($edit) && $edit->id == 1)
+
                             <div class="form-group col-sm-12 col-md-9">
                                 <label for="page_content">Page Content<span class="text-danger">*</span></label>
                                 <textarea class="ckeditor form-control" name="page_content" id="page_content" required>
@@ -77,17 +79,47 @@
                                 </textarea>
                             </div>
                             
+@elseif(isset($edit) && $edit->id == 2)
+
+                             {{-- Section 1 : Top Logos / Header --}}
+                                <div class="form-group col-md-12">
+                                    <label>Section 1 – Header / Logos Content</label>
+                                    <textarea class="ckeditor form-control" name="section_one">
+                                        {{ $edit->section_one ?? '' }}
+                                    </textarea>
+                                </div>
+
+                                {{-- Section 2 : Welcome + Quote Form --}}
+                                <div class="form-group col-md-12">
+                                    <label>Section 2 – Welcome Content</label>
+                                    <textarea class="ckeditor form-control" name="section_two">
+                                        {{ $edit->section_two ?? '' }}
+                                    </textarea>
+                                </div>
+
+                                {{-- Section 3 : Our Products --}}
+                                <div class="form-group col-md-12">
+                                    <label>Section 3 – Our Products Content</label>
+                                    <textarea class="ckeditor form-control" name="section_three">
+                                        {{ $edit->section_three ?? '' }}
+                                    </textarea>
+                                </div>
+                              @else
+
+                                @endif
+
+
                         </div>
 
                         <div class="row mt-4 pull-left">
                             <div class="col-sm-12 ">
-                                <button class="btn btn-primary mr-2" type="submit" >
+                                <button class="btn btn-primary " type="submit" >
                                     <i class="fa fa-arrow-circle-up"></i>
                                     {{ isset($edit) ? 'Update' : 'Add' }}
                                 </button>
-                                <button type="reset" class="btn btn-secondary  mb-1">
+                                <button type="reset" class="btn btn-secondary ">
                                     <i class="fa fa-arrow-circle-left"></i>
-                                    <a href="{{url()->previous()}}" class="text-white">Cancel</a>
+                                    <a href="{{ route('admin.list_cms_page') }}" class="text-white">Cancel</a>
                                 </button>
                             </div>
                         </div>

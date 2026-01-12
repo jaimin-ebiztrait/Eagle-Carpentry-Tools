@@ -23,9 +23,9 @@
                     <div class="col-md-7">
                         <h2 class="h3 display">CMS Pages</h2>
                     </div>
-                    <div class="col-md-5">
+                    <!-- <div class="col-md-5">
                         <a href="{{route('admin.add_cms_page')}}" class="btn btn-primary pull-right rounded-pill">Add CMS Page</a>
-                    </div>
+                    </div> -->
                 </div>
             </header>
             <div class="card">

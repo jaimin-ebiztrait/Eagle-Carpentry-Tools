@@ -4,10 +4,14 @@
 	<div class="wrapper">
         <div class="contact_us_form">
             <div class="pro_head_title">
-                <h2>About Us</h2>
+                <h2>  {{$page->page_title }}</h2>
             </div>
+
+
+         
                 <div class="contact_us">
-                	<div class="about_us_cont">
+                       {!!  $page->content  !!}
+                	<!-- <div class="about_us_cont">
                     	<div class="work_space">                        	
                         	<img src="{{ asset('frontend/images/office.png') }}">
                         </div>
@@ -19,7 +23,7 @@
                         </p>
                         <p>In order to achieve the set goals of company, our team of experts works round the clock and efficiently. To enhance the performance and knowledge of our professionals we have developed an ultra-modern quality testing facility.We have our corporate office with fully computerized and skilled high-tech staff. We have wide market network in major states of India and abroad. </p>
                         <p></p>
-                    </div>    
+                    </div>     -->
                 </div>
                 
         </div>   

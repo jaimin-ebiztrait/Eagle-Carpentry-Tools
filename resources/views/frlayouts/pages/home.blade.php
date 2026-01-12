@@ -1,7 +1,7 @@
 @extends('frlayouts.app')
 
 @section('content')
-<div class="flexslider">
+<!-- <div class="flexslider">
     <ul class="slides">
         <li>
             <img src="{{ asset('frontend/images/slider1.png') }}" />
@@ -40,16 +40,17 @@
             </div>
         </li>
     </ul>
-</div>
-
-<div class="brand_logo">
+</div> -->
+  <!-- {!!  $page->content  !!} -->
+  <div class="brand_logo">
     <div class="wrapper">
         <div class="brand_logo_img">
-            <ul>
+            {!!  $page->section_one  !!}
+            <!-- <ul>
                 <li><img src="{{ asset('frontend/images/brand-logo1.jpg') }}"></li>
                 <li><img src="{{ asset('frontend/images/brand-logo2.jpg') }}"></li>
                 <li><img src="{{ asset('frontend/images/brand-logo3.jpg') }}"></li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </div>
@@ -58,20 +59,7 @@
     <div class="wrapper">
         <div class="recent_product_img">
 
-            <h3>Welcome To SWASTIK TOOLS AND ENGG. WORKS</h3>
-            <p>Manufacturer and Exporter of Carpentry Tools and Hand Tools since 1958.</p>
-            <p>A trusted name in the Carpentry tools & Hand tools sectors.</p>
-            <p>We offer wide range of Tools like :</p>
-            <ul>
-                <li>Cut Plane Iron ( Randha Pana).</li>
-                <li>All type of Chisels like Firmer Chisel, Bevel Chisel , Mortise Chisel , Malbar Chisel, Heavy Chisel
-                    etc.</li>
-                <li>Hammer (without Handle).</li>
-                <li>Planer blades (Randha Patta).</li>
-                <li>Cabinet Screw Driver with Wooden Handle.</li>
-                <li>Wood Turning Set & Wood Carving Set.</li>
-                <li>Plastic & Wooden Handles for chisels and other hand tools.</li>
-                <li>Marking Gauge and many more.</li>
+            {!!  $page->section_two  !!}
             </ul>
         </div>
         <div class="get_quote_form">
@@ -138,33 +126,7 @@
                 <h3>Our product</h3>
             </div>
             <ul>
-                <li>
-                    <div class="fut_img">
-                        <div class="recnt_child">
-                            <!-- Use asset() to dynamically generate the image URL -->
-                            <img src="{{ asset('frontend/images/futured_pro3.png') }}" alt="Firmer Chisel">
-                        </div>
-                    </div>
-                    <h2>Firmer Chisel</h2>
-                </li>
-                <li>
-                    <div class="fut_img">
-                        <div class="recnt_child">
-                            <!-- Use asset() to dynamically generate the image URL -->
-                            <img src="{{ asset('frontend/images/bevel_edge_chisel1.png') }}" alt="Bevel Edge Chisel">
-                        </div>
-                    </div>
-                    <h2>Bevel Edge Chisel</h2>
-                </li>
-                <li>
-                    <div class="fut_img">
-                        <div class="recnt_child">
-                            <!-- Use asset() to dynamically generate the image URL -->
-                            <img src="{{ asset('frontend/images/mortise_chisel.png') }}" alt="Mortise Chisel">
-                        </div>
-                    </div>
-                    <h2>Mortise Chisel</h2>
-                </li>
+                  {!!  $page->section_three  !!}
             </ul>
         </div>
     </div>

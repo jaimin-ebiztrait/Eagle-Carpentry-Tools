@@ -59,14 +59,14 @@
                         </div>
 
                         {{-- Slug --}}
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label for="slug">Slug <span class="text-danger">*</span></label>
                             <input type="text" name="slug" id="slug" class="form-control"
                                 value="{{ old('slug', $edit->slug ?? '') }}" required disabled >
-                        </div>
+                        </div> -->
 
                         {{-- Status --}}
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label for="status">Status <span class="text-danger">*</span></label>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="active"
@@ -75,7 +75,15 @@
                                     {{ (old('status', $edit->status ?? '')=='inactive')?'selected':'' }}>Inactive
                                 </option>
                             </select>
-                        </div>
+                        </div> -->
+
+
+                       <div class="form-group col-sm-12 col-md-12">
+                        <label for="page_content">Page Content<span class="text-danger">*</span></label>
+                        <textarea class="ckeditor form-control" name="page_content" id="page_content" required>
+                            {{ isset($edit->description) ? $edit->description : '' }}
+                        </textarea>
+                    </div>
 
                         {{-- Product Images --}}
                         <div class="form-group col-md-12">
@@ -104,10 +112,8 @@
                                             {{-- Image preview --}}
                                             <img src="{{ asset($img->image) }}" class="img-preview"
                                                 style="width:80px; height:80px; border:1px solid #ccc; padding:2px; border-radius:4px; object-fit: cover;">
-
-                                            {{-- File input --}}
                                             <input type="file" name="replace_images[{{ $img->id }}]"
-                                                class="form-control replaceInput" accept="image/*" style="flex: 1;">
+                                                class="form-control replaceInput" accept="image/*">
                                         </td>
 
                                         <td>
@@ -136,7 +142,6 @@
                             </table>
                         </div>
 
-
                     </div>
 
                     {{-- Buttons --}}
@@ -158,6 +163,7 @@
     </div>
 </section>
 @endsection
+
 @section('page-script')
 <script>
 $(document).ready(function() {
@@ -170,9 +176,7 @@ $(document).ready(function() {
             <td style="display: flex; align-items: center; gap: 10px;">
             <img src="" class="img-preview" 
                      style="width:80px; height:80px; border:1px solid #ccc; padding:2px; border-radius:4px; display:none;">                   <br>
-
             <input type="file" name="images[]" class="form-control imgInput" accept="image/*">
-                
             </td>
             <td>
                 <input type="text" name="image_names[]" class="form-control" placeholder="Image Name">

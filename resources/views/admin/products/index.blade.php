@@ -23,10 +23,10 @@
                 <div class="col-md-7">
                     <h2 class="h3 display">Products</h2>
                 </div>
-                <!-- <div class="col-md-5">
+                <div class="col-md-5">
                     <a href="{{ route('admin.add_product') }}" class="btn btn-primary pull-right rounded-pill">Add
                         Product</a>
-                </div> -->
+                </div>
             </div>
         </header>
 
@@ -53,7 +53,7 @@
                                     <center>No</center>
                                 </th>
                                 <th>Name</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                                 <!-- <th>Images</th> -->
                                 <th>Action</th>
                             </tr>
@@ -66,13 +66,13 @@
                                     <center>{{ $loop->iteration }}</center>
                                 </td>
                                 <td>{{ $product->name }}</td>
-                                <td>
+                                <!-- <td>
                                     @if($product->status == 'active')
                                     <span class="badge bg-success">Active</span>
                                     @else
                                     <span class="badge bg-danger">Inactive</span>
                                     @endif
-                                </td>
+                                </td> -->
                                
 
                                 <td>
@@ -81,14 +81,14 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    <!-- <form action="{{ route('admin.delete_product', $product->id) }}" method="POST"
+                                    <form action="{{ route('admin.delete_product', $product->id) }}" method="POST"
                                         style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-danger" title="Delete Product"
                                             onclick="return confirm('Are you sure you want to delete this product?')">
                                             <i class="fa fa-trash"></i>
                                         </button>
-                                    </form> -->
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

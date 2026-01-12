@@ -13,5 +13,12 @@ class CmsPages extends Model
     protected $dates = ['deleted_at'];
     
     protected $table = 'cms_pages';
-    protected $fillable = ['page_title','slug','content'];
-}
+            protected $fillable = [
+                'page_title',
+                'slug',
+                'content',       // keep if still used
+                'section_one',
+                'section_two',
+                'section_three',
+            ];
+            }

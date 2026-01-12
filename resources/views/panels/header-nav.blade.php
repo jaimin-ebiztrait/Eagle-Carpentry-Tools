@@ -7,7 +7,7 @@
                         <i class="fa fa-bars fa-2x"> </i>
                     </a>
                     <a href="{{ route('admin.dash') }}" class="navbar-brand">
-                        <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Dynamic Website
+                        <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">
                             </strong></div>
                     </a></div>
                 <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">

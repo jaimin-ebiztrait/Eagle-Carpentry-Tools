@@ -22,7 +22,7 @@ class CmsController extends Controller
 
     public function storePage(Request $request){
         $validator = Validator::make($request->all(), [
-            // 'page_title' => 'required',
+            'page_title' => 'required',
             'page_content' => 'required',
         ]);
 
@@ -32,7 +32,7 @@ class CmsController extends Controller
         }
 
         $store_qry = CmsPages::create([
-                        // 'page_title' => $request->page_title,
+                        'page_title' => $request->page_title,
                         'slug' => Str::slug($request->page_title),
 
                         'content' => $request->page_content,
@@ -57,31 +57,72 @@ class CmsController extends Controller
         }
     }
 
-    public function updatePage(Request $request){
-        $validator = Validator::make($request->all(), [
-            // 'page_title' => 'required',
-            'page_content' => 'required',
-        ]);
+    // public function updatePage(Request $request){
+    //     $validator = Validator::make($request->all(), [
+    //         'page_title' => 'required',
+    //         'page_content' => 'required',
+    //     ]);
 
-        if ($validator->fails()) {
-            // return $validator->errors();
-            return back()->withErrors($validator->errors());
-        }
+    //     if ($validator->fails()) {
+    //         // return $validator->errors();
+    //         return back()->withErrors($validator->errors());
+    //     }
 
-        $id = $request->xid;
-        $update_qry = CmsPages::where('id', $id)
-                    ->update([
-                        // 'page_title' => $request->page_title,
-                        'content' => $request->page_content,
-                    ]);
+    //     $id = $request->xid;
+    //     $update_qry = CmsPages::where('id', $id)
+    //                 ->update([
+    //                     'page_title' => $request->page_title,
+    //                     'content' => $request->page_content,
+    //                 ]);
 
-        if($update_qry){
-            return back()->with(['success' => 'CMS Page updated successfully.']);
-        }
-        else{
-            return back()->withErrors('Error in updating CMS Page.');
-        }
+    //     if($update_qry){
+    //         return back()->with(['success' => 'CMS Page updated successfully.']);
+    //     }
+    //     else{
+    //         return back()->withErrors('Error in updating CMS Page.');
+    //     }
+    // }
+public function updatePage(Request $request)
+{
+    $id = $request->xid;
+
+    // Base validation
+    $rules = [
+        'section_one'   => 'nullable',
+        'section_two'   => 'nullable',
+        'section_three' => 'nullable',
+    ];
+
+    // Page title only required for ID = 1
+    if ($id == 1) {
+        $rules['page_title'] = 'required';
     }
+
+    $validator = Validator::make($request->all(), $rules);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $data = [
+        'section_one'   => $request->section_one,
+        'section_two'   => $request->section_two,
+        'section_three' => $request->section_three,
+    ];
+
+    // Save page title only if present
+    if ($id == 1) {
+        $data['page_title'] = $request->page_title;
+    }
+
+    $update = CmsPages::where('id', $id)->update($data);
+
+    if ($update) {
+        return back()->with('success', 'CMS Page updated successfully.');
+    }
+
+    return back()->withErrors('Error in updating CMS Page.');
+}
 
     // public function delPage(){}
 }
