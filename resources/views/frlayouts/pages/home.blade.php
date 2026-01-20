@@ -1,4 +1,7 @@
 @extends('frlayouts.app')
+@section('title', $page->seo_title ?? 'Default Title | Brand Name')
+@section('meta_description', $page->meta_description ?? 'Default meta description')
+@section('seo_description', $page->seo_description ?? 'Optional SEO description')
 
 @section('content')
 <!-- <div class="flexslider">

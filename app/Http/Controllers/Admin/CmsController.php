@@ -110,6 +110,9 @@ public function updatePage(Request $request)
         'section_one'   => $request->section_one,
         'section_two'   => $request->section_two,
         'section_three' => $request->section_three,
+         'seo_title'        => $request->seo_title,
+        'meta_description' => $request->meta_description,
+        'seo_description'  => $request->seo_description,
     ];
 
     // Save page title only if present

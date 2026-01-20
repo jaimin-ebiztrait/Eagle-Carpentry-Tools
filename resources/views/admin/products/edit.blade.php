@@ -55,7 +55,7 @@
                         {{-- Product Name --}}
                         <div class="form-group col-md-6">
                             <label for="name">Product Name <span class="text-danger">*</span></label>
-                            <input type="text" name="name" id="name" class="form-control"
+                            <input type="text" name="name" id="name" class="form-control"placeholder="Product Name"
                                 value="{{ old('name', $edit->name ?? '') }}" required >
                         </div>
 
@@ -152,6 +152,7 @@
                 <input type="text" 
                        name="seo_title"
                        class="form-control"
+                       placeholder="SEO title for Google"
                        value="{{ old('seo_title', $edit->seo_title ?? '') }}"
                        required>
             </div>
@@ -163,14 +164,14 @@
                           class="form-control"
                           rows="5"
                           maxlength="160"
-                          placeholder="Meta Description">{{ old('meta_description', $edit->meta_description ?? '') }}</textarea>
+                          placeholder="Meta description for search engines">{{ old('meta_description', $edit->meta_description ?? '') }}</textarea>
             </div>
 
             <!-- SEO Description -->
             <div class="form-group col-md-6">
                 <label>SEO Description </label>
                 <textarea name="seo_description"
-                          class="form-control"
+                          class="form-control" placeholder="SEO keywords or description"
                           rows="5">{{ old('seo_description', $edit->seo_description ?? '') }}</textarea>
             </div>
 

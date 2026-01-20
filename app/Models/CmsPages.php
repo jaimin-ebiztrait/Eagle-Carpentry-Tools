@@ -20,5 +20,8 @@ class CmsPages extends Model
                 'section_one',
                 'section_two',
                 'section_three',
+                 'seo_title',
+    'meta_description',
+    'seo_description',
             ];
             }
