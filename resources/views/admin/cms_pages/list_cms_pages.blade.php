@@ -7,15 +7,17 @@
 
 @endsection
 @section('content')
-    <div class="breadcrumb-holder">
+
+    {{-- <div class="breadcrumb-holder">
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dash') }}">Dashboard</a></li>
-                {{--                <li class="breadcrumb-item active"><a href="{{route('manageasset')}}">Manage Asset </a></li>--}}
+            <li class="breadcrumb-item active"><a href="{{route('manageasset')}}">Manage Asset </a></li>
                 <li class="breadcrumb-item active">CMS Pages</li>
             </ul>
         </div>
-    </div>
+    </div> --}}
+
     <section>
         <div class="container-fluid">
             <header>

@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="breadcrumb-holder">
+    {{-- <div class="breadcrumb-holder">
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dash') }}">Dashboard</a></li>
@@ -18,7 +18,8 @@
                 <li class="breadcrumb-item ">{{ isset($edit) ? 'View/Edit CMS page' : 'Add CMS Page'}}</li>
             </ul>
         </div>
-    </div>
+    </div> --}}
+
     <section>
         <div class="container-fluid">
             <header>
@@ -31,7 +32,6 @@
             <div class="card">
                 <div class="card-body p-4">
                     
-
                     {{-- @if ($errors->any()) --}}
                         {{-- @foreach ($errors->all() as $error) --}}
                             <!-- <div class="card-alert card gradient-45deg-red-pink">

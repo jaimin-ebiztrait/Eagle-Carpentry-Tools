@@ -20,7 +20,7 @@
 
         <!-- Content Row -->
         <div class="row">
-        <h2> Welcome Admin Dashboard</h2>
+        <h2> WELCOME TO SWASTIK TOOLS AND ENGG WORKS DASHBOARD</h2>
 
             <!-- Earnings (Monthly) Card Example -->
             <!-- <div class="col-xl-4 col-md-6 mb-4">
