@@ -46,7 +46,10 @@ class ProductController extends Controller
             'product_images.id as image_id',
             'product_images.image',
             'product_images.imageName',
-            'product_images.is_primary'
+            'product_images.is_primary',
+            'products.seo_title',
+            'products.meta_description',
+            'products.seo_description',
         )
         ->where('products.id', $id)
         ->get();
@@ -61,6 +64,9 @@ class ProductController extends Controller
         'slug' => $product[0]->slug,
         'description' => $product[0]->description,
         'status' => $product[0]->status,
+        'seo_title' => $product[0]->seo_title,
+        'meta_description' => $product[0]->meta_description,
+        'seo_description' => $product[0]->seo_description,
         'images' => $product
             ->whereNotNull('image_id') // important
             ->map(function ($img) {
@@ -190,6 +196,9 @@ public function store(Request $request)
         'slug' => $slug,  // Automatically generated slug
         'status' => 'active',
         'description' => $request->page_content,
+         'seo_title' => $request->seo_title,
+        'meta_description' => $request->meta_description,
+        'seo_description' => $request->seo_description,
         'created_at' => now(),
         'updated_at' => now(),
     ]);
@@ -237,6 +246,9 @@ public function update(Request $request, $id)
         'name' => $request->name,
         'slug' => $slug,  // Use auto-generated or provided slug
         'status' => 'active',
+         'seo_title' => $request->seo_title,
+        'meta_description' => $request->meta_description,
+        'seo_description' => $request->seo_description,
         'description' => $request->page_content, // Update description
         'updated_at' => now(),
     ]);

@@ -1,5 +1,12 @@
 @extends('frlayouts.app')
 
+
+
+
+@section('title', $currentProduct->seo_title ?? 'Default Title | Brand Name')
+@section('meta_description', $currentProduct->meta_description ?? 'Default meta description')
+@section('seo_description', $currentProduct->seo_description ?? 'Optional SEO description')
+
 @section('content')
 
 <div class="wrapper">
@@ -26,7 +33,7 @@
         <div class="right_panel">
             <div class="pro_head_title">
                 <!-- Display the selected product name, or a default if none is selected -->
-                <h2>{{ isset($currentProduct) ? $currentProduct->name : 'Product' }}</h2>
+                <h2>{{ isset($currentProduct) ? $currentProduct->name : 'Products' }}</h2>
             </div>
 
             <div class="pro_page_right_cont">
@@ -54,9 +61,12 @@
                     </div>
                 </div>
 
-                <div class="pro_title">
-                    <h3>{{ $image->imageName }}</h3>
-                </div>
+                @if(!empty($image->imageName))
+    <div class="pro_title">
+        <h3>{{ $image->imageName }}</h3>
+    </div>
+@endif
+
             </li>
         @endforeach
 

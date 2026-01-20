@@ -4,6 +4,13 @@
 @section('title','Master Demo Project')
 
 @section('vendor-style')
+<style>
+    #page-length-option_length,
+#page-length-option_filter {
+    display: none;
+}
+
+</style>
 
 @endsection
 @section('content')
@@ -91,11 +98,18 @@
 {{-- page script --}}
 @section('page-script')
     <script>
-        $(document).ready(function () {
-            $('#page-length-option').DataTable();
+      $(document).ready(function () {
+    $('#page-length-option').DataTable({
+        // Hide length selector and search box
+        "dom": 't', // only table, no length menu or filter
 
+        // Make certain columns non-orderable
+        "columnDefs": [
+            { "orderable": false, "targets": [0] }, // No column
+            { "orderable": false, "targets": [2] }  // Action column
+        ]
+    });
+});
 
-            
-        });
     </script>
 @endsection

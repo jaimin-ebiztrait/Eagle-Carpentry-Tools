@@ -38,12 +38,12 @@
     </a>
 </li>
 
-<li class="{{ request()->routeIs('admin.admin_users') ? 'active' : '' }}">
+<!-- <li class="{{ request()->routeIs('admin.admin_users') ? 'active' : '' }}">
     <a href="{{ route('admin.admin_users') }}">
         <i class=""></i>
         <span>Users</span>
     </a>
-</li>
+</li> -->
 
 <li class="{{ request()->routeIs('admin.list_cms_page') ? 'active' : '' }}">
     <a href="{{ route('admin.list_cms_page') }}">

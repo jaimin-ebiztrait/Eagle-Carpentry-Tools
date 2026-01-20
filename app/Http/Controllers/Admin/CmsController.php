@@ -84,6 +84,8 @@ class CmsController extends Controller
     // }
 public function updatePage(Request $request)
 {
+
+//dd($request->all());
     $id = $request->xid;
 
     // Base validation
@@ -113,6 +115,8 @@ public function updatePage(Request $request)
     // Save page title only if present
     if ($id == 1) {
         $data['page_title'] = $request->page_title;
+                $data['content'] = $request->page_content;
+
     }
 
     $update = CmsPages::where('id', $id)->update($data);

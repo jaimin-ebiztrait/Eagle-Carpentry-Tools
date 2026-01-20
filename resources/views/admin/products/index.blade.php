@@ -20,10 +20,10 @@
     <div class="container-fluid">
         <header>
             <div class="row">
-                <div class="col-md-7">
-                    <h2 class="h3 display">Products</h2>
+                <div class="col-md-7 col-6 d-flex align-items-center">
+                    <h2 class="h3 display m-0">Products</h2>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 col-6">
                     <a href="{{ route('admin.add_product') }}" class="btn btn-primary pull-right rounded-pill">Add
                         Product</a>
                 </div>
@@ -109,8 +109,15 @@
 
 @section('page-script')
 <script>
-$(document).ready(function() {
-    $('#product-table').DataTable();
+$(document).ready(function () {
+    $('#product-table').DataTable({
+        dom: 't',
+        columnDefs: [
+            { orderable: false, targets: [0] }, // No column
+            { orderable: false, targets: [2] } // Action column (last)
+        ]
+    });
 });
+
 </script>
 @endsection

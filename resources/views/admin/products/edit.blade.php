@@ -144,7 +144,38 @@
                         </div>
 
                     </div>
+<div class="row">
 
+            <!-- SEO Title -->
+            <div class="form-group col-md-12">
+                <label>SEO Title <span class="text-danger">*</span></label>
+                <input type="text" 
+                       name="seo_title"
+                       class="form-control"
+                       value="{{ old('seo_title', $edit->seo_title ?? '') }}"
+                       required>
+            </div>
+
+            <!-- Meta Description -->
+            <div class="form-group col-md-6">
+                <label>Meta Description</label>
+                <textarea name="meta_description"
+                          class="form-control"
+                          rows="5"
+                          maxlength="160"
+                          placeholder="Meta Description">{{ old('meta_description', $edit->meta_description ?? '') }}</textarea>
+            </div>
+
+            <!-- SEO Description -->
+            <div class="form-group col-md-6">
+                <label>SEO Description </label>
+                <textarea name="seo_description"
+                          class="form-control"
+                          rows="5">{{ old('seo_description', $edit->seo_description ?? '') }}</textarea>
+            </div>
+
+        </div>
+   
                     {{-- Buttons --}}
                     <div class="row mt-4">
                         <div class="col-md-12">

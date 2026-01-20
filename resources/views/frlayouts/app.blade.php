@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Default Title')</title>
+ <title>@yield('title', 'Default Title | Brand Name')</title>
 
+    <!-- Dynamic Meta Description -->
+    <meta name="description" content="@yield('meta_description', 'Default meta description for SEO')">
+
+    <!-- Optional SEO Description -->
+    <meta name="seo-description" content="@yield('seo_description', 'Optional SEO description')">
     <!-- Link to CSS Files -->
  <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/font-awesome.css') }}" rel="stylesheet">

@@ -45,6 +45,15 @@
                             <i class="fa fa-key"></i>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+    <a class="dropdown-item" href="{{ route('admin.admineditPage', 1) }}">
+        <span class="d-none d-sm-inline-block">Profile</span>
+        <i class="fa fa-user"></i>
+    </a>
+</li>
+
+
                 <!-- Log out-->
                     <li class="nav-item">
                         <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
