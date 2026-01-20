@@ -7,14 +7,14 @@
 @endsection
 
 @section('content')
-<div class="breadcrumb-holder">
+{{-- <div class="breadcrumb-holder">
     <div class="container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dash') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Products</li>
         </ul>
     </div>
-</div>
+</div> --}}
 
 <section>
     <div class="container-fluid">
@@ -74,7 +74,6 @@
                                     @endif
                                 </td> -->
                                
-
                                 <td>
                                     <a href="{{ route('admin.edit_product', $product->id) }}"
                                         class="btn btn-sm btn-info" title="Edit Product">
