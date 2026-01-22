@@ -4,6 +4,17 @@
 @section('title','Products')
 
 @section('vendor-style')
+<style>
+#product-table_length {
+    display: none;
+}
+
+/* Hide icons for non-sortable columns */
+table.dataTable thead th.sorting_disabled::before,
+table.dataTable thead th.sorting_disabled::after {
+    display: none !important;
+}
+</style>
 @endsection
 
 @section('content')
@@ -62,9 +73,8 @@
                             @if(isset($products) && $products->count())
                             @foreach($products as $product)
                             <tr>
-                                <td>
-                                    <center>{{ $loop->iteration }}</center>
-                                </td>
+                              <td class="text-center"></td>
+
                                 <td>{{ $product->name }}</td>
                                 <!-- <td>
                                     @if($product->status == 'active')
@@ -74,8 +84,9 @@
                                     @endif
                                 </td> -->
                                
-                                <td>
-                                    <a href="{{ route('admin.edit_product', $product->id) }}"
+                                <td class="demo-style" style="display: flex;
+    gap: 1rem;">
+                                    <a  style="height: 24px;" href="{{ route('admin.edit_product', $product->id) }}"
                                         class="btn btn-sm btn-info" title="Edit Product">
                                         <i class="fa fa-edit"></i>
                                     </a>
@@ -110,14 +121,39 @@
 @section('page-script')
 <script>
 $(document).ready(function () {
-    $('#product-table').DataTable({
-        dom: 't',
+
+    let table = $('#product-table').DataTable({
+        paging: true,
+        searching: true,
+        ordering: true,
+        info: true,
+
+        order: [],
+
         columnDefs: [
-            { orderable: false, targets: [0] }, // No column
-            { orderable: false, targets: [2] } // Action column (last)
+            { targets: 0, orderable: false }, // No column
+            { targets: 2, orderable: false }  // Action column
         ]
     });
-});
 
+    // 🔥 Auto numbering (works on first load also)
+    function updateSerialNumbers() {
+        let pageInfo = table.page.info();
+        table.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+            cell.innerHTML = pageInfo.start + i + 1;
+        });
+    }
+
+    // Call on every draw
+    table.on('draw.dt', function () {
+        updateSerialNumbers();
+    });
+
+    // ✅ IMPORTANT: call once on page load
+    updateSerialNumbers();
+
+});
 </script>
+
+
 @endsection

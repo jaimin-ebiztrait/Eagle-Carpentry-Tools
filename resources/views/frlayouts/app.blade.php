@@ -86,9 +86,15 @@
                 <div class="social_icon">
                     <h2>Follow Us:</h2>
                     <ul>
+                        
                         <li class="facebook"><a href="https://www.facebook.com/carpentrytools"></a></li>
                         <li class="twitter"><a href="https://mobile.twitter.com/CarpentryTool"></a></li>
                         <li class="linkedin"><a href="https://in.linkedin.com/in/carpentrytools"></a></li>
+                        <li class="instagram">
+                	     <a href="https://www.instagram.com/swastik_tools_engineering?igsh=MWVtOXUya3VmeHI3Mw">
+                		
+                	</a>
+                </li>
                     </ul>
                 </div>
             </div>
@@ -139,6 +145,39 @@
                 <p>Made by eBizTrait Themes.</p>
             </div>
         </div>
+         <div class="social_icon" style="
+    display: flex;
+    align-items: center;    justify-content: center;">
+    <h2 style="margin-right: 10px;    color: white;" >Follow Us:</h2>
+    <ul style="
+    display: flex;
+    gap: 10px;">
+        <li>
+            <a href="https://www.facebook.com/carpentrytools" target="_blank">
+                <img src="{{ asset('frontend/images/facebook2.png') }}" alt="Facebook">
+            </a>
+        </li>
+
+        <li>
+            <a href="https://mobile.twitter.com/CarpentryTool" target="_blank">
+                <img src="{{ asset('frontend/images/twitter2.png') }}" alt="Twitter">
+            </a>
+        </li>
+
+        <li>
+            <a href="https://in.linkedin.com/in/carpentrytools" target="_blank">
+                <img src="{{ asset('frontend/images/linkedin2.png') }}" alt="LinkedIn">
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.instagram.com/swastik_tools_engineering" target="_blank">
+                <img src="{{ asset('frontend/images/instagram-logo.png') }}" alt="Instagram">
+            </a>
+        </li>
+    </ul>
+</div>
+
     </footer>
 </body>
 

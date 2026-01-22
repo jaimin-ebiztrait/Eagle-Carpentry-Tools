@@ -7,7 +7,7 @@ a{ text-decoration:none;}
 
 
 .wrapper{width:1170px; margin:0 auto;}
-header{float:left; width:100%; padding:0; margin:0;background:url(../images/header_bg2.jpg) no-repeat left top;}
+header{float:left; width:100%; padding:0; margin:0;background:url(../images/header_bg2.jpg) no-repeat left top;background-size: cover;}
 header .header_top {width:100%; float:left; margin:20px 0;}
 /* header .header_top {width:100%; float:left;} */
 
@@ -21,6 +21,8 @@ header .social_icon ul li a{float: left;height: 32px;margin-left: 4px;margin-top
 header .social_icon ul li.facebook a{background:url(../images/facebook2.png) no-repeat center center;}
 header .social_icon ul li.twitter a{background:url(../images/twitter2.png) no-repeat center center;}
 header .social_icon ul li.linkedin a{background:url(../images/linkedin2.png) no-repeat center center;}
+header .social_icon ul li.instagram a{background:url(../images/instagram-logo.png) no-repeat center center;}
+
 nav{float:left; background:#464b50; width:100%;}
 nav ul{float:left; width:100%;}
 nav ul li{float:left; width:auto; text-align:center;}
@@ -78,7 +80,8 @@ nav ul li a{font-size:18px; color:#fff;padding:25px 20px; float:left;}
 .futured_product ul li h2{float:left; width:100%; text-align:center; font-size:18px; color:#fff; text-transform:uppercase; padding-top:35px; padding-bottom:25px;}
 .futured_product ul li p{font-size:14px; color:#828181;}
 /*footer{float:left; width:100%; background:url(../images/footer_bg.jpg) no-repeat left top; padding:20px 0;}*/
-footer{float:left; width:100%; background:url(../images/footer_bg.jpg) no-repeat left top;  padding:10px 0;}
+footer{float:left; width:100%; background:url(../images/footer_bg.jpg) no-repeat left top;  padding:10px 0;    background-size: cover;
+}
 
 footer .foot_left{float:left;}
 footer .foot_left p{font-size:14px; color:#fff; text-align:left; line-height:28px;}
@@ -192,6 +195,11 @@ table tr td .title{ font-weight: 600;}
 .contact_us.brochure{float:left; width:auto; text-align:center; padding:40px;}
 .contact_us.brochure img{width:100%;}
 footer .foot_left p a{color:#fff;}
+footer .social_icon ul li.facebook a{background:url(../images/facebook2.png) no-repeat center center;}
+footer .social_icon ul li.twitter a{background:url(../images/twitter2.png) no-repeat center center;}
+footer .social_icon ul li.linkedin a{background:url(../images/linkedin2.png) no-repeat center center;}
+footer .social_icon ul li.instagram a, footer .social_icon ul li.instagram a{background:url(../images/instagram-logo.png) no-repeat center center;}
+
 .ebrochure_link{float:right;width:auto;background: #484d52;border-radius: 4px;box-shadow: 2px 2px 0 #a9b1b9;border: none; line-height: 35px;ont-size: 16px;color: #fff;text-transform: uppercase; 
 cursor: pointer; margin-bottom:20px; padding:5px 20px; margin-right:0;}
 .ebrochure_link a{color:#fff;}

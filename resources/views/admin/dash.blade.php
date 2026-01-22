@@ -20,7 +20,7 @@
 
         <!-- Content Row -->
         <div class="row">
-                <div class="col-12 text-center">
+                <div class="col-12 text-center  center-krunal">
 
         <h2> WELCOME TO SWASTIK TOOLS AND ENGG WORKS DASHBOARD</h2>
     </div>

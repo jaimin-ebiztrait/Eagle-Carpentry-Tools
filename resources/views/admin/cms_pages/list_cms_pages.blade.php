@@ -9,6 +9,12 @@
 #page-length-option_filter {
     display: none;
 }
+/* Hide icons for non-sortable columns */
+table.dataTable thead th.sorting_disabled::before,
+table.dataTable thead th.sorting_disabled::after {
+    display: none !important;
+}
+
 
 </style>
 
@@ -56,8 +62,8 @@
                         <table id="page-length-option" class="table table-striped table-hover multiselect">
                             <thead>
                             <tr>
-                                <th>
-                                    <center>No</center>
+                                <th>No
+                                    
                                 </th>
                                 <th>Page Title</th>
                                 <th>Action</th>
@@ -97,19 +103,33 @@
 
 {{-- page script --}}
 @section('page-script')
-    <script>
-      $(document).ready(function () {
-    $('#page-length-option').DataTable({
-        // Hide length selector and search box
-        "dom": 't', // only table, no length menu or filter
+<script>
+$(document).ready(function () {
 
-        // Make certain columns non-orderable
-        "columnDefs": [
-            { "orderable": false, "targets": [0] }, // No column
-            { "orderable": false, "targets": [2] }  // Action column
+    let table = $('#page-length-option').DataTable({
+        dom: 't',
+
+        order: [],   // ✅ stop default first-column sorting
+
+        columnDefs: [
+            { targets: 0, orderable: false }, // No ❌
+            { targets: 2, orderable: false }  // Action ❌
+            // Page Title (1) sortable by default ✅
         ]
     });
-});
 
-    </script>
+    // 🔥 Auto serial number (always correct)
+    table.on('order.dt search.dt draw.dt', function () {
+        table.column(0, { search: 'applied', order: 'applied' })
+            .nodes()
+            .each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+    }).draw();
+
+});
+</script>
+
+
+
 @endsection

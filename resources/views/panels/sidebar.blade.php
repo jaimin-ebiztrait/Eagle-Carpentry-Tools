@@ -17,7 +17,7 @@
            <img 
     src="{{ asset('img/logo (1).png') }}" 
     alt="Admin Logo" 
-    style="max-width:220px; width:100%; height:auto;"
+    style="max-width:220px; width:66%; height:auto;"
 >
 
         </div>

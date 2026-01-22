@@ -3,6 +3,14 @@
 @section('title', isset($edit) ? 'Edit Product' : 'Add Product')
 
 @section('vendor-style')
+<style>
+@media (max-width: 768px) {
+td.test-respon {
+    display: block !important;
+}
+}
+
+</style>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
@@ -109,24 +117,24 @@
                                     @if(isset($edit->images) && $edit->images->count())
                                     @foreach($edit->images as $img)
                                     <tr>
-                                        <td style="display: flex; align-items: center; gap: 10px;">
+                                        <td class="test-respon" style="display: flex; align-items: center; gap: 10px;">
                                             {{-- Image preview --}}
                                             <img src="{{ asset($img->image) }}" class="img-preview"
                                                 style="width:80px; height:80px; border:1px solid #ccc; padding:2px; border-radius:4px; object-fit: cover;">
                                             <input type="file" name="replace_images[{{ $img->id }}]"
-                                                class="form-control replaceInput" accept="image/*">
+                                                class="form-control replaceInput krunal-kumar-style"  accept="image/*">
                                         </td>
 
-                                        <td>
+                                        <td class="test-respon1" >
                                             <input type="text" name="existing_image_names[{{ $img->id }}]"
-                                                class="form-control" value="{{ $img->imageName }}"
+                                                class="form-control test-input" value="{{ $img->imageName }}"
                                                 placeholder="Image Name">
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center test-respon2">
                                             <input type="radio" name="primary_image" value="existing_{{ $img->id }}"
                                                 {{ $img->is_primary ? 'checked' : '' }}>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center test-respon3">
                                             <a href="{{ route('admin.delete_product_image', $img->id) }}"
                                                 class="btn btn-sm btn-danger"
                                                 onclick="return confirm('Delete this image?')">
@@ -148,13 +156,13 @@
 
             <!-- SEO Title -->
             <div class="form-group col-md-12">
-                <label>SEO Title <span class="text-danger">*</span></label>
+                <label>SEO Title <span class="text-danger"></span></label>
                 <input type="text" 
                        name="seo_title"
                        class="form-control"
                        placeholder="SEO title for Google"
                        value="{{ old('seo_title', $edit->seo_title ?? '') }}"
-                       required>
+                       >
             </div>
 
             <!-- Meta Description -->
@@ -206,18 +214,18 @@ $(document).ready(function() {
     function addRow() {
         let newRow = `
         <tr class="new-image-row">
-            <td style="display: flex; align-items: center; gap: 10px;">
+            <td class="test-respon"style="display: flex; align-items: center; gap: 10px;">
             <img src="" class="img-preview" 
                      style="width:80px; height:80px; border:1px solid #ccc; padding:2px; border-radius:4px; display:none;">                   <br>
-            <input type="file" name="images[]" class="form-control imgInput" accept="image/*">
+            <input type="file" name="images[]" class="form-control imgInput krunal-kumar-style" accept="image/*">
             </td>
-            <td>
-                <input type="text" name="image_names[]" class="form-control" placeholder="Image Name">
+            <td class="test-respon1" >
+                <input type="text" name="image_names[]" class="form-control  test-input" placeholder="Image Name">
             </td>
-            <td class="text-center">
+            <td class="text-center test-respon2">
                 <input type="radio" name="primary_image" value="new_${rowCount}">
             </td>
-            <td class="text-center">
+            <td class="text-center test-respon3">
                 <button type="button" class="btn btn-danger removeRow">-</button>
             </td>
         </tr>`;
