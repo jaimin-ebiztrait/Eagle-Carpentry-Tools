@@ -17,7 +17,11 @@ https://bootstrapious.com/p/bootstrap-4-dashboard
 .text-bold {
     font-weight: 700;
 }
+.side-navbar .sidenav-header{ 
 
+   height: 65.59px;
+}
+ 
 .text-small {
     font-size: 0.9rem;
 }
@@ -342,7 +346,40 @@ nav.navbar a.menu-btn i[class*='icon-'] {
 nav.navbar a.menu-btn:hover {
     background: #2b90d9;
 }
+@media (max-width: 575px) {
+input.form-control.replaceInput.krunal-kumar-style {
+    height: fit-content;
+    padding: .25rem;
+    font-size: 10px;
+    line-height: normal;
+    text-wrap: wrap;
+}
 
+input.form-control.test-input {
+
+    height: calc(1.4rem + 2px);
+
+    padding: .25rem;
+
+    font-size: 9px;
+
+    text-wrap: wrap;
+
+}
+.test-respon,
+.test-respon1,
+.test-respon2,
+.test-respon3 {
+    padding: 0.25rem !important;
+}
+
+input.form-control.imgInput.krunal-kumar-style {
+    height: fit-content !important;
+    padding: 0.25rem;
+    font-size: 9px;
+    text-wrap: wrap;
+}
+}
 /*  NAVBAR MEDIAQUERIES ---------------------------------- */
 @media (max-width: 575px) {
     nav.navbar .dropdown {
@@ -486,14 +523,21 @@ nav.navbar a.menu-btn:hover {
 .side-navbar .sidenav-header {
     background: #292929;
     padding: 14px;
-    margin-bottom: 10px;
+        /* margin-bottom: 10px; */
+
+    margin-bottom: 0px;
 }
 
-.side-navbar .sidenav-header img {
+/* .side-navbar .sidenav-header img {
     width: 50px;
     height: 50px;
+} */
+.side-navbar .sidenav-header img{ 
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+   object-fit: contain;
 }
-
 .side-navbar .sidenav-header span {
     font-size: 0.8em;
     color: #666;
@@ -619,7 +663,9 @@ nav.navbar a.menu-btn:hover {
         width: 70px;
         text-align: center;
     }
-
+nav.side-navbar.show-sm{
+width:80px;
+}
     .side-navbar.show-sm {
         left: 0 !important;
     }
@@ -629,7 +675,7 @@ nav.navbar a.menu-btn:hover {
     }
 
     .side-navbar .sidenav-header-inner {
-        display: none;
+        display: block;
     }
 
     .side-navbar .sidenav-heading {
@@ -1048,6 +1094,16 @@ nav.navbar a.menu-btn:hover {
     .updates .full-date {
         font-size: 0.85em;
     }
+
+            .container-fluid {
+    position: relative !important;
+}
+.col-12.text-center.center-krunal {
+  position: absolute !important;
+    top: 20rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 }
 
 /*
@@ -1214,6 +1270,7 @@ footer.main-footer p {
     footer.main-footer div[class*="col-"] {
         text-align: center !important;
     }
+
 }
 
 @media (min-width: 768px) {
@@ -3167,4 +3224,5 @@ a > code {
         margin-right: 15px;
         margin-left: 15px;
     }
+
 }

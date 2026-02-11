@@ -11,11 +11,10 @@ use App\Models\CmsPages;
 
 class PageController extends Controller
 {
-public function home() {
-        return view('frlayouts.pages.home');
-    }
-
-  public function products($slug = null)
+// public function home() {
+//         return view('frlayouts.pages.home');
+//     }
+public function products($slug = null)
 {
     // All products with primary image
     $products = DB::table('products')
@@ -46,17 +45,23 @@ public function home() {
             abort(404);
         }
 
-        // All images of current product
+        // All images of the current product, including the description in each image
         $productImages = DB::table('product_images')
             ->where('product_id', $currentProduct->id)
             ->orderByDesc('is_primary')
-            ->get();
+            ->get()
+            ->map(function ($image) use ($currentProduct) {
+                // Add the product's description to each image in the collection
+                $image->description = $currentProduct->description;
+                return $image;
+            });
     }
     return view(
         'frlayouts.pages.products',
         compact('products', 'currentProduct', 'productImages')
     );
 }
+
 
 
 public function quoteSubmit(Request $request)
@@ -142,7 +147,12 @@ public function feedbackSubmit(Request $request)
 
     return view('frlayouts.pages.about_us', compact('page'));
 }
+  public function home()
+{
+    $page = CmsPages::where('slug', 'home-page')->firstOrFail();
 
+    return view('frlayouts.pages.home', compact('page'));
+}
 
     public function brochure() {
         return view('frlayouts.pages.brochure');

@@ -25,13 +25,13 @@ use App\Http\Controllers\PageController;
 
 // Route::get('/', [AdminController::class, 'login']);
 
-Route::get('/', [PageController::class, 'home'])->name('home');
+// Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/products/{slug?}', [PageController::class, 'products'])->name('products');
 Route::get('/feedback', [PageController::class, 'feedback'])->name('feedback');
 Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/brochure', [PageController::class, 'brochure'])->name('brochure');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
-
+Route::get('/', [PageController::class, 'home'])->name('home');
 
 
 Route::post('/quote-submit', [PageController::class, 'quoteSubmit'])->name('quote.submit');

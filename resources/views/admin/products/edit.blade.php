@@ -3,11 +3,20 @@
 @section('title', isset($edit) ? 'Edit Product' : 'Add Product')
 
 @section('vendor-style')
+<style>
+@media (max-width: 768px) {
+td.test-respon {
+    display: block !important;
+}
+}
+
+</style>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
-<div class="breadcrumb-holder">
+
+{{-- <div class="breadcrumb-holder">
     <div class="container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dash') }}">Dashboard</a></li>
@@ -15,7 +24,7 @@
             <li class="breadcrumb-item">{{ isset($edit) ? 'Edit Product' : 'Add Product' }}</li>
         </ul>
     </div>
-</div>
+</div> --}}
 
 <section>
     <div class="container-fluid">
@@ -54,19 +63,19 @@
                         {{-- Product Name --}}
                         <div class="form-group col-md-6">
                             <label for="name">Product Name <span class="text-danger">*</span></label>
-                            <input type="text" name="name" id="name" class="form-control"
+                            <input type="text" name="name" id="name" class="form-control"placeholder="Product Name"
                                 value="{{ old('name', $edit->name ?? '') }}" required >
                         </div>
 
                         {{-- Slug --}}
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label for="slug">Slug <span class="text-danger">*</span></label>
                             <input type="text" name="slug" id="slug" class="form-control"
                                 value="{{ old('slug', $edit->slug ?? '') }}" required disabled >
-                        </div>
+                        </div> -->
 
                         {{-- Status --}}
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label for="status">Status <span class="text-danger">*</span></label>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="active"
@@ -75,7 +84,15 @@
                                     {{ (old('status', $edit->status ?? '')=='inactive')?'selected':'' }}>Inactive
                                 </option>
                             </select>
-                        </div>
+                        </div> -->
+
+
+                       <div class="form-group col-sm-12 col-md-12">
+                        <label for="page_content">Page Content<span class="text-danger">*</span></label>
+                        <textarea class="ckeditor form-control" name="page_content" id="page_content" required>
+                            {{ isset($edit->description) ? $edit->description : '' }}
+                        </textarea>
+                    </div>
 
                         {{-- Product Images --}}
                         <div class="form-group col-md-12">
@@ -100,26 +117,24 @@
                                     @if(isset($edit->images) && $edit->images->count())
                                     @foreach($edit->images as $img)
                                     <tr>
-                                        <td style="display: flex; align-items: center; gap: 10px;">
+                                        <td class="test-respon" style="display: flex; align-items: center; gap: 10px;">
                                             {{-- Image preview --}}
                                             <img src="{{ asset($img->image) }}" class="img-preview"
                                                 style="width:80px; height:80px; border:1px solid #ccc; padding:2px; border-radius:4px; object-fit: cover;">
-
-                                            {{-- File input --}}
                                             <input type="file" name="replace_images[{{ $img->id }}]"
-                                                class="form-control replaceInput" accept="image/*" style="flex: 1;">
+                                                class="form-control replaceInput krunal-kumar-style"  accept="image/*">
                                         </td>
 
-                                        <td>
+                                        <td class="test-respon1" >
                                             <input type="text" name="existing_image_names[{{ $img->id }}]"
-                                                class="form-control" value="{{ $img->imageName }}"
+                                                class="form-control test-input" value="{{ $img->imageName }}"
                                                 placeholder="Image Name">
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center test-respon2">
                                             <input type="radio" name="primary_image" value="existing_{{ $img->id }}"
                                                 {{ $img->is_primary ? 'checked' : '' }}>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center test-respon3">
                                             <a href="{{ route('admin.delete_product_image', $img->id) }}"
                                                 class="btn btn-sm btn-danger"
                                                 onclick="return confirm('Delete this image?')">
@@ -136,9 +151,40 @@
                             </table>
                         </div>
 
-
                     </div>
+<div class="row">
 
+            <!-- SEO Title -->
+            <div class="form-group col-md-12">
+                <label>SEO Title <span class="text-danger"></span></label>
+                <input type="text" 
+                       name="seo_title"
+                       class="form-control"
+                       placeholder="SEO title for Google"
+                       value="{{ old('seo_title', $edit->seo_title ?? '') }}"
+                       >
+            </div>
+
+            <!-- Meta Description -->
+            <div class="form-group col-md-6">
+                <label>Meta Description</label>
+                <textarea name="meta_description"
+                          class="form-control"
+                          rows="5"
+                          maxlength="160"
+                          placeholder="Meta description for search engines">{{ old('meta_description', $edit->meta_description ?? '') }}</textarea>
+            </div>
+
+            <!-- SEO Description -->
+            <div class="form-group col-md-6">
+                <label>SEO Description </label>
+                <textarea name="seo_description"
+                          class="form-control" placeholder="SEO keywords or description"
+                          rows="5">{{ old('seo_description', $edit->seo_description ?? '') }}</textarea>
+            </div>
+
+        </div>
+   
                     {{-- Buttons --}}
                     <div class="row mt-4">
                         <div class="col-md-12">
@@ -158,6 +204,7 @@
     </div>
 </section>
 @endsection
+
 @section('page-script')
 <script>
 $(document).ready(function() {
@@ -167,20 +214,18 @@ $(document).ready(function() {
     function addRow() {
         let newRow = `
         <tr class="new-image-row">
-            <td style="display: flex; align-items: center; gap: 10px;">
+            <td class="test-respon"style="display: flex; align-items: center; gap: 10px;">
             <img src="" class="img-preview" 
                      style="width:80px; height:80px; border:1px solid #ccc; padding:2px; border-radius:4px; display:none;">                   <br>
-
-            <input type="file" name="images[]" class="form-control imgInput" accept="image/*">
-                
+            <input type="file" name="images[]" class="form-control imgInput krunal-kumar-style" accept="image/*">
             </td>
-            <td>
-                <input type="text" name="image_names[]" class="form-control" placeholder="Image Name">
+            <td class="test-respon1" >
+                <input type="text" name="image_names[]" class="form-control  test-input" placeholder="Image Name">
             </td>
-            <td class="text-center">
+            <td class="text-center test-respon2">
                 <input type="radio" name="primary_image" value="new_${rowCount}">
             </td>
-            <td class="text-center">
+            <td class="text-center test-respon3">
                 <button type="button" class="btn btn-danger removeRow">-</button>
             </td>
         </tr>`;

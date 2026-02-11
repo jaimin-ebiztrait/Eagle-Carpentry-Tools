@@ -4,18 +4,33 @@
 @section('title','Master Demo Project')
 
 @section('vendor-style')
+<style>
+    #page-length-option_length,
+#page-length-option_filter {
+    display: none;
+}
+/* Hide icons for non-sortable columns */
+table.dataTable thead th.sorting_disabled::before,
+table.dataTable thead th.sorting_disabled::after {
+    display: none !important;
+}
+
+
+</style>
 
 @endsection
 @section('content')
-    <div class="breadcrumb-holder">
+
+    {{-- <div class="breadcrumb-holder">
         <div class="container-fluid">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dash') }}">Dashboard</a></li>
-                {{--                <li class="breadcrumb-item active"><a href="{{route('manageasset')}}">Manage Asset </a></li>--}}
+            <li class="breadcrumb-item active"><a href="{{route('manageasset')}}">Manage Asset </a></li>
                 <li class="breadcrumb-item active">CMS Pages</li>
             </ul>
         </div>
-    </div>
+    </div> --}}
+
     <section>
         <div class="container-fluid">
             <header>
@@ -23,9 +38,9 @@
                     <div class="col-md-7">
                         <h2 class="h3 display">CMS Pages</h2>
                     </div>
-                    <div class="col-md-5">
+                    <!-- <div class="col-md-5">
                         <a href="{{route('admin.add_cms_page')}}" class="btn btn-primary pull-right rounded-pill">Add CMS Page</a>
-                    </div>
+                    </div> -->
                 </div>
             </header>
             <div class="card">
@@ -47,8 +62,8 @@
                         <table id="page-length-option" class="table table-striped table-hover multiselect">
                             <thead>
                             <tr>
-                                <th>
-                                    <center>No</center>
+                                <th>No
+                                    
                                 </th>
                                 <th>Page Title</th>
                                 <th>Action</th>
@@ -88,12 +103,33 @@
 
 {{-- page script --}}
 @section('page-script')
-    <script>
-        $(document).ready(function () {
-            $('#page-length-option').DataTable();
+<script>
+$(document).ready(function () {
+
+    let table = $('#page-length-option').DataTable({
+        dom: 't',
+
+        order: [],   // ✅ stop default first-column sorting
+
+        columnDefs: [
+            { targets: 0, orderable: false }, // No ❌
+            { targets: 2, orderable: false }  // Action ❌
+            // Page Title (1) sortable by default ✅
+        ]
+    });
+
+    // 🔥 Auto serial number (always correct)
+    table.on('order.dt search.dt draw.dt', function () {
+        table.column(0, { search: 'applied', order: 'applied' })
+            .nodes()
+            .each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+    }).draw();
+
+});
+</script>
 
 
-            
-        });
-    </script>
+
 @endsection
