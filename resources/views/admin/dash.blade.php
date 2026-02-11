@@ -20,7 +20,14 @@
 
         <!-- Content Row -->
         <div class="row">
-        <h2> Welcome Admin Dashboard</h2>
+                <div class="col-12 text-center  center-krunal">
+
+        {{-- <h2> WELCOME TO SWASTIK TOOLS AND ENGG WORKS DASHBOARD</h2> --}}
+        <div style="height: 80vh; display: flex; align-items: center; justify-content: center;">
+    <h2 style = "font-size: 36px; line-height: 1.5em;">WELCOME TO <br> SWASTIK TOOLS AND ENGG WORKS <br> DASHBOARD</h2>
+</div>
+
+    </div>
 
             <!-- Earnings (Monthly) Card Example -->
             <!-- <div class="col-xl-4 col-md-6 mb-4">

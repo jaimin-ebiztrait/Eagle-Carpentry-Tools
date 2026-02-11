@@ -67,11 +67,11 @@
 
                         <div class="row mt-4 pull-right">
                             <div class="col-sm-12 ">
-                                <button class="btn btn-primary mr-2" type="submit" >
+                                <button class="btn btn-primary " type="submit" >
                                     <i class="fa fa-arrow-circle-up"></i>
                                     Update
                                 </button>
-                                <button type="reset" class="btn btn-secondary  mb-1">
+                                <button type="reset" class="btn btn-secondary ">
                                     <i class="fa fa-arrow-circle-left"></i>
                                     <a href="{{url()->previous()}}" class="text-white">Cancel</a>
                                 </button>

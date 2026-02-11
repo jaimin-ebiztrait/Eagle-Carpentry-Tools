@@ -25,14 +25,33 @@ use App\Http\Controllers\PageController;
 
 // Route::get('/', [AdminController::class, 'login']);
 
+Route::get('/clear', function () {
+    Artisan::call('optimize:clear');
+    return 'Cleared';
+});
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/products/{slug?}', [PageController::class, 'products'])->name('products');
 Route::get('/feedback', [PageController::class, 'feedback'])->name('feedback');
 Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/brochure', [PageController::class, 'brochure'])->name('brochure');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
+Route::get('{oldHtml}', function ($oldHtml) {
 
+    // only handle .html files
+    if (!str_ends_with($oldHtml, '.html')) {
+        abort(404);
+    }
 
+    $product = DB::table('products')
+        ->where('old_html_file', $oldHtml)
+        ->first();
+
+    if ($product) {
+        return redirect()->route('products', ['slug' => $product->slug], 301);
+    }
+
+    abort(404);
+});
 
 Route::post('/quote-submit', [PageController::class, 'quoteSubmit'])->name('quote.submit');
 Route::post('/feedback-submit', [PageController::class, 'feedbackSubmit'])->name('feedback_form.submit');
@@ -50,7 +69,6 @@ Route::post('/feedback-submit', [PageController::class, 'feedbackSubmit'])->name
 // Route::post('/contact-us', [ContactController::class, 'send'])->name('contact.send');
 
 Route::post('/admin-login', [AdminController::class, 'postLogin'])->name('admin.signin');
-
 
 Route::group(['prefix' => 'admin'], function () {
 

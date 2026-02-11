@@ -4,6 +4,17 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
+	
+	//config.extraAllowedContent = 'div(*)';
+	config.extraAllowedContent = 'div(*){*}';
+
+    config.enterMode = CKEDITOR.ENTER_DIV;
+    config.autoParagraph = false;
+
+
+	config.extraAllowedContent = 'span(*){*}';
+	config.allowedContent = true;
+	// config.extraAllowedContent= true;
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html

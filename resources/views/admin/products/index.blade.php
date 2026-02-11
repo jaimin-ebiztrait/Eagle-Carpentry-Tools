@@ -4,29 +4,40 @@
 @section('title','Products')
 
 @section('vendor-style')
+<style>
+#product-table_length {
+    display: none;
+}
+
+/* Hide icons for non-sortable columns */
+table.dataTable thead th.sorting_disabled::before,
+table.dataTable thead th.sorting_disabled::after {
+    display: none !important;
+}
+</style>
 @endsection
 
 @section('content')
-<div class="breadcrumb-holder">
+{{-- <div class="breadcrumb-holder">
     <div class="container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.dash') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Products</li>
         </ul>
     </div>
-</div>
+</div> --}}
 
 <section>
     <div class="container-fluid">
         <header>
             <div class="row">
-                <div class="col-md-7">
-                    <h2 class="h3 display">Products</h2>
+                <div class="col-md-7 col-6 d-flex align-items-center">
+                    <h2 class="h3 display m-0">Products</h2>
                 </div>
-                <!-- <div class="col-md-5">
+                <div class="col-md-5 col-6">
                     <a href="{{ route('admin.add_product') }}" class="btn btn-primary pull-right rounded-pill">Add
                         Product</a>
-                </div> -->
+                </div>
             </div>
         </header>
 
@@ -53,7 +64,7 @@
                                     <center>No</center>
                                 </th>
                                 <th>Name</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                                 <!-- <th>Images</th> -->
                                 <th>Action</th>
                             </tr>
@@ -62,33 +73,32 @@
                             @if(isset($products) && $products->count())
                             @foreach($products as $product)
                             <tr>
-                                <td>
-                                    <center>{{ $loop->iteration }}</center>
-                                </td>
+                              <td class="text-center"></td>
+
                                 <td>{{ $product->name }}</td>
-                                <td>
+                                <!-- <td>
                                     @if($product->status == 'active')
                                     <span class="badge bg-success">Active</span>
                                     @else
                                     <span class="badge bg-danger">Inactive</span>
                                     @endif
-                                </td>
+                                </td> -->
                                
-
-                                <td>
-                                    <a href="{{ route('admin.edit_product', $product->id) }}"
+                                <td class="demo-style" style="display: flex;
+    gap: 1rem;">
+                                    <a  style="height: 24px;" href="{{ route('admin.edit_product', $product->id) }}"
                                         class="btn btn-sm btn-info" title="Edit Product">
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    <!-- <form action="{{ route('admin.delete_product', $product->id) }}" method="POST"
+                                    <form action="{{ route('admin.delete_product', $product->id) }}" method="POST"
                                         style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-danger" title="Delete Product"
                                             onclick="return confirm('Are you sure you want to delete this product?')">
                                             <i class="fa fa-trash"></i>
                                         </button>
-                                    </form> -->
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -110,8 +120,40 @@
 
 @section('page-script')
 <script>
-$(document).ready(function() {
-    $('#product-table').DataTable();
+$(document).ready(function () {
+
+    let table = $('#product-table').DataTable({
+        paging: true,
+        searching: true,
+        ordering: true,
+        info: true,
+
+        order: [],
+
+        columnDefs: [
+            { targets: 0, orderable: false }, // No column
+            { targets: 2, orderable: false }  // Action column
+        ]
+    });
+
+    // 🔥 Auto numbering (works on first load also)
+    function updateSerialNumbers() {
+        let pageInfo = table.page.info();
+        table.column(0, { page: 'current' }).nodes().each(function (cell, i) {
+            cell.innerHTML = pageInfo.start + i + 1;
+        });
+    }
+
+    // Call on every draw
+    table.on('draw.dt', function () {
+        updateSerialNumbers();
+    });
+
+    // ✅ IMPORTANT: call once on page load
+    updateSerialNumbers();
+
 });
 </script>
+
+
 @endsection
